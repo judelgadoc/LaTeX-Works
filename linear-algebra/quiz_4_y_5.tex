@@ -1,0 +1,211 @@
+\documentclass[12pt]{article}
+\usepackage{authblk}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[utf8]{inputenc}
+
+%% Para poner el blacksquare en demostraciones
+\renewcommand{\qedsymbol}{$\blacksquare$} 
+
+ %% Para matrices aumentadas
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\title{Quiz 4 y 5}
+\author{Juan Pablo Delgado Cárcamo}
+\affil{
+ Facultad de Ingeniería \\
+ Departamento de Ingeniería de Sistemas e Industrial \\
+ Universidad Nacional de Colombia
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\noindent
+1. Demuestre que el conjunto
+$$B = \{ x^2 + x; x - 1; x +1 \}, \ u = 3x^2 - x + 2$$
+es una base del espacio $V = P_{2}$ y encuentre las coordenadas del vector $u$ respecto a la base $B \ ([u]_{B})$.
+\bigskip
+
+$$B = \{ \begin{pmatrix} 1\\ 1\\ 0 \end{pmatrix}, \begin{pmatrix} 0\\ 1\\ -1 \end{pmatrix}, \begin{pmatrix} 0\\ 1\\ 1 \end{pmatrix} \},\ u = \begin{pmatrix} 3\\ -1\\ 2 \end{pmatrix} $$
+\bigskip
+
+\begin{proof}
+
+    La dimensión de $V$ es 3, entonces, $B$ es base si $v_{1}, v_{2}, v_{3}$ son linealmente independientes. \\
+    $v_{1}, v_{2}, v_{3}$ son linealmente independientes si el determinante de la matriz de sus componentes es diferente de 0.
+    \bigskip
+    
+    $$|B| = \begin{vmatrix} 1 & 0 & 0\\ 1 & 1 & 1\\ 0 & -1 & 1 \end{vmatrix} = 1 - (-1) = 2$$
+    
+    $$|B| = 2 \neq 0$$
+    
+\end{proof}
+
+$$
+\begin{pmatrix}[ccc|c] 1 & 0 & 0 & 3\\ 1 & 1 & 1 & -1\\ 0 & -1 & 1 & 2 \end{pmatrix} 
+\sim 
+\begin{pmatrix}[ccc|c] 1 & 0 & 0 & 3\\ 0 & 1 & 1 & -4\\ 0 & -1 & 1 & 2 \end{pmatrix} 
+\sim 
+\begin{pmatrix}[ccc|c] 1 & 0 & 0 & 3\\ 0 & 1 & 1 & -4\\ 0 & 0 & 2 & -2 \end{pmatrix} 
+\sim
+$$
+$$
+\begin{pmatrix}[ccc|c] 1 & 0 & 0 & 3\\ 0 & 1 & 1 & -4\\ 0 & 0 & 1 & -1 \end{pmatrix}
+\sim
+\begin{pmatrix}[ccc|c] 1 & 0 & 0 & 3\\ 0 & 1 & 0 & -3\\ 0 & 0 & 1 & -1 \end{pmatrix}
+$$
+
+\bigskip
+
+Entonces, las coordenadas de $[u]_{B}$ son
+
+$$\begin{pmatrix} 3\\ -3\\ -1 \end{pmatrix}$$
+
+\bigskip
+
+\noindent
+2. Dadas las bases
+$$B_{1} = \{ \hat{i}, \hat{i}-\hat{j}, \hat{i}-\hat{j}-\hat{k} \}$$
+$$B_{2} = \{ 2\hat{i} + \hat{j}, 3\hat{j}, 5\hat{k} - \hat{i} \}$$
+de $\mathbb{R}^3$
+\bigskip
+
+a) Halle la matriz de cambio de base de
+$B_{1}$ a $B_{2}$ 
+\bigskip
+
+$$
+\begin{pmatrix}[ccc|ccc] 2 & 0 & 0 & 1 & 1 & 1\\ 1 & 3 & -1 & 0 & -1 & -1\\ 0 & 0 & 5 & 0 & 0 & -1 \end{pmatrix} 
+\sim
+\begin{pmatrix}[ccc|ccc] 1 & 0 & 0 & \frac{1}{2} & \frac{1}{2} & \frac{1}{2}\\ 1 & 3 & -1 & 0 & -1 & -1\\ 0 & 0 & 5 & 0 & 0 & -1 \end{pmatrix} \sim
+$$
+$$
+\begin{pmatrix}[ccc|ccc] 1 & 0 & 0 & \frac{1}{2} & \frac{1}{2} & \frac{1}{2}\\ 0 & 3 & -1 & -\frac{1}{2} & -\frac{3}{2} & -\frac{3}{2}\\ 0 & 0 & 5 & 0 & 0 & -1 \end{pmatrix} 
+\sim
+\begin{pmatrix}[ccc|ccc] 1 & 0 & 0 & \frac{1}{2} & \frac{1}{2} & \frac{1}{2}\\ 0 & 1 & -\frac{1}{3} & -\frac{1}{6} & -\frac{1}{2} & -\frac{1}{2}\\ 0 & 0 & 1 & 0 & 0 & -\frac{1}{5} \end{pmatrix}
+\sim
+$$
+$$
+\begin{pmatrix}[ccc|ccc] 1 & 0 & 0 & \frac{1}{2} & \frac{1}{2} & \frac{1}{2}\\ 0 & 1 & 0 & -\frac{1}{6} & -\frac{1}{2} & -\frac{17}{30}\\ 0 & 0 & 1 & 0 & 0 & -\frac{1}{5} \end{pmatrix}
+$$
+\bigskip
+
+b) Encuentre las coordenadas del vector
+$\Vec{w} = -\hat{i} + 2\hat{j} - 3\hat{k}$ en la base $B_{2}$, haciéndolo directamente y usando la matriz de cambio de base
+\bigskip
+
+$$\begin{pmatrix}[ccc|c] 2 & 0 & 0 & -1\\ 1 & 3 & -1 & 2\\ 0 & 0 & 5 & -3 \end{pmatrix} 
+\sim
+\begin{pmatrix}[ccc|c] 1 & 0 & 0 & -\frac{1}{2}\\ 0 & 3 & -1 & \frac{5}{2}\\ 0 & 0 & 5 & -3 \end{pmatrix}
+\sim
+\begin{pmatrix}[ccc|c] 1 & 0 & 0 & -\frac{1}{2}\\ 0 & 1 & -\frac{1}{3} & \frac{5}{6}\\ 0 & 0 & 1 & -\frac{3}{5} \end{pmatrix}
+$$
+$$
+\begin{pmatrix}[ccc|c] 1 & 0 & 0 & -\frac{1}{2}\\ 0 & 1 & 0 & \frac{19}{30}\\ 0 & 0 & 1 & -\frac{3}{5} \end{pmatrix}
+$$
+
+\bigskip
+Usando la matriz de cambio de base:
+\bigskip
+$$B = \begin{pmatrix} 2 & 0 & 0 \\ 1 & 3 & -1\\ 0 & 0 & 5 \end{pmatrix}$$
+\bigskip
+La matriz de cambio de base ($M_{B \leftarrow C}$) será $B^{-1}$, $B^{-1} = \frac{1}{|B|}Adj(B)$, donde $Adj(B) = C^{T}$.
+\bigskip
+
+$$C = \begin{pmatrix} 15 & -5 & 0\\ 0 & 10 & 0\\ 0 & 2 & 6 \end{pmatrix} \implies Adj(B) = \begin{pmatrix} 15 & 0 & 0\\ -5 & 10 & 2\\ 0 & 0 & 6 \end{pmatrix} \ \land \ |B| = 30 \ \therefore$$
+
+$$B^{-1} = \frac{1}{30}\begin{pmatrix} 15 & 0 & 0\\ -5 & 10 & 2\\ 0 & 0 & 6 \end{pmatrix}$$
+
+$\therefore$
+
+$$[w]_{B} = \frac{1}{30} \begin{pmatrix} 15 & 0 & 0\\ -5 & 10 & 2\\ 0 & 0 & 6 \end{pmatrix} \begin{pmatrix} -1\\ 2\\ -3 \end{pmatrix} = \frac{1}{30} \begin{pmatrix} -15\\ 19\\ -18 \end{pmatrix}
+$$
+
+\bigskip
+
+
+
+\noindent
+3. Dada la matriz
+
+$$A = \begin{pmatrix}
+    1 & -1 & 2 & 3 & 0 \\
+    -1 & 0 & -4 & 3 & 1  \\
+    2 & 1 & 6 & 0 & 1 \\
+    -1 & 2 & 0 & 1 & 1
+    \end{pmatrix}$$
+    
+a) Determine una base para el espacio nulo de la matriz
+\bigskip
+
+b) Determine una base para la imagen de la matriz
+\bigskip
+
+c) Determine el rango y la nulidad de A
+\bigskip
+
+\noindent
+4. Diga si las siguientes afirmaciones son verdaderas o falsas (Justifique).
+\bigskip
+
+a) Suponga una matriz de tamaño $17 \times 9$, el rango de la matriz es 10 y su nulidad es 7
+\bigskip
+
+b) Suponga $V$ el espacio vectorial de todas las matrices simétricas de tamaño $3 \times 3$ entonces su dimensión es 5
+\bigskip
+
+Falso
+\begin{proof}
+$$\begin{pmatrix} 0 & a & b\\ a & 0 & c\\ b & c & 0 \end{pmatrix} = a\begin{pmatrix} 0 & 1 & 0\\ 1 & 0 & 0\\ 0 & 0 & 0 \end{pmatrix} + b\begin{pmatrix} 0 & 0 & 1\\ 0 & 0 & 0\\ 1 & 0 & 0 \end{pmatrix} + c\begin{pmatrix} 0 & 0 & 0\\ 0 & 0 & 1\\ 0 & 1 & 0 \end{pmatrix}$$
+
+$$dim(V) = 3$$
+\end{proof}
+\bigskip
+
+c) Si $v_{1}; v_{2}$ es base de $V$, entonces el conjunto $v_{1} + v_{2}; v_{1} - v_{2}$ también es base de $V$.
+\bigskip
+
+Verdadero
+\begin{proof}
+Ya que $v_{1}$ y $v_{2}$ son base de V, podemos decir que $dim(V) = 2$ y además, $v_{1}$ y $v_{2}$ son linealmente independientes. Como $v_{1}$ y $v_{2}$ son linealmente independientes, el determinante de la matriz de sus componentes es diferente de 0, es decir
+
+$$a_{1}b_{2} - a_{2}b_{1} \neq 0$$
+\bigskip
+
+Donde $v_{1} = \begin{pmatrix} a_{1}\\ b_{1} \end{pmatrix}$ y $v_{2} = \begin{pmatrix} a_{2}\\ b_{2} \end{pmatrix}$
+
+$\{ v_{1} + v_{2}; v_{1} - v_{2} \}$ será una base de $V$ si $v_{1} + v_{2}$ y $v_{1} - v_{2}$ son linealmente independientes $\therefore$
+
+$$\begin{vmatrix} a_{1} + a_{2} & a_{1} - a_{2}\\  b_{1} + b_{2} & b_{1} - b_{2} \end{vmatrix} = (a_{1} + a_{2})(b_{1} - b_{2}) - (b_{1} + b_{2})(a_{1} - a_{2})$$
+
+$$ = a_{1}b_{1} - a_{1}b_{2} + a_{2}b_{1} - a_{2}b_{2} - (a_{1}b_{1} + a_{1}b_{2} - a_{2}b_{1} - a_{2}b_{2})$$
+
+$$ = -2(a_{1}b_{2} - a_{2}b_{1})$$
+
+$$a_{1}b_{2} - a_{2}b_{1} \neq 0 \ \therefore$$
+
+$$-2(a_{1}b_{2} - a_{2}b_{1}) \neq 0$$
+
+\end{proof}
+\bigskip
+
+d) $(0,0); (1,3)$ es una base de $\mathbb{R}^2$
+\bigskip
+
+Falso
+\begin{proof}
+$\begin{pmatrix} 0\\ 0 \end{pmatrix}$ y $\begin{pmatrix} 1\\ 3 \end{pmatrix}$ serán base de $\mathbb{R}^2$ si son linealmente independientes, y esto es así si el determinante de la matriz de sus componentes es diferente de 0 $\therefore$
+
+$$\begin{vmatrix} 0 & 1\\ 0 & 3 \end{vmatrix} = 0$$
+
+\end{proof}
+
+\end{document}
